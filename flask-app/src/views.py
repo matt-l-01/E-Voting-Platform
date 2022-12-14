@@ -1,15 +1,30 @@
 from flask import Blueprint
+from src import db
 
 views = Blueprint('views', __name__)
 
-# This is a base route
-# we simply return a string.  
-@views.route('/')
-def home():
-    return ('<h1>Hello from your web app!!</h1>')
+# Routes for statistical views for the server (number of each entries)
 
-# This is a sample route for the /test URI.  
-# as above, it just returns a simple string. 
-@views.route('/test')
-def tester():
-    return "<h1>this is a test!</h1>"
+@views.route('/bans')
+def showbans():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT COUNT(*) FROM bans')
+    return ('The server contains ' + str(cursor.fetchone()[0]) + ' ban entries')
+
+@views.route('/votes')
+def showvotes():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT COUNT(*) FROM votes')
+    return ('The server contains ' + str(cursor.fetchone()[0]) + ' vote entries')
+
+@views.route('/complaints')
+def showcomplaints():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT COUNT(*) FROM complaints')
+    return ('The server contains ' + str(cursor.fetchone()[0]) + ' complaint entries')
+
+@views.route('/candidates')
+def showcandidates():
+    cursor = db.get_db().cursor()
+    cursor.execute('SELECT COUNT(*) FROM candidates')
+    return ('The server contains ' + str(cursor.fetchone()[0]) + ' candidate entries')

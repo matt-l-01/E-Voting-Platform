@@ -1,24 +1,13 @@
-# MySQL + Flask Boilerplate Project
+# Electronic Voting Platform
 
-This repo contains a boilerplate setup for spinning up 2 docker containers: 
-1. A MySQL 8 container for obvious reasons
-1. A Python Flask container to implement a REST API
+Video Demo: https://youtu.be/RGRoY0n_hOI
 
-## How to setup and start the containers
-**Important** - you need Docker Desktop installed
+Welcome to my course project for CS3200. I have created an electronic voting platform that allows three different personas: **voter**, **auditor**, and **admin** to interact with the voting system.
 
-1. Clone this repository.  
-1. Create a file named `db_root_password.txt` in the `secrets/` folder and put inside of it the root password for MySQL. 
-1. Create a file named `db_password.txt` in the `secrets/` folder and put inside of it the password you want to use for the `webapp` user. 
-1. In a terminal or command prompt, navigate to the folder with the `docker-compose.yml` file.  
-1. Build the images with `docker compose build`
-1. Start the containers with `docker compose up`.  To run in detached mode, run `docker compose up -d`. 
+**Voter**s can view the current candidates and cast a ballot for the candidate of their choice. This data is sent through a POST request and added to the database.
 
-## For setting up a Conda Web-Dev environment:
+**Auditor**s can view all the votes casted so far
 
-1. `conda create -n webdev python=3.9`
-1. `conda activate webdev`
-1. `pip install flask flask-mysql flask-restful cryptography flask-login`
 
 
 
